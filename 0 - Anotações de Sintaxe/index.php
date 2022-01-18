@@ -40,7 +40,35 @@ foreach ($ingredientes as $key => $value) {
     echo "item: " . ($key + 1) . ": " . $value . "<br/>";
 }
 
+echo "<br/><br/><br/>";
+/////////////////////////////////////////////////////////////////////////////////////////////
+//Passando apenas a variavel $soma por referencia e nao seu valor 0, utilizando o &
+function somar ($n1, $n2, &$total) {
+    $total = $n1 + $n2;
+}
 
+$x = 3;
+$y = 2;
+$soma = 0;
+
+//apos a execucao da funcao, a $soma tera o valor de $total
+somar($x, $y, $soma);
+
+echo $x . " + " . $y . " = " . $soma;
+//se remover o & da funcao somar, o valor de $soma seria 0
+
+echo "<br/><br/><br/>";
+/////////////////////////////////////////////////////////////////////////////////////////////
+//Funcoes anonimas
+$dizimo = function (float $valor) {
+    return $valor * 0.1;
+};
+
+echo $dizimo(956.60) . "<br/>";
+//outra forma de fazer o mesmo com ArrowFunction,
+//porem o VS Code nao reconhece e ira tratar como erro mesmo funcionando normalmente
+$dizimo2 = fn($valor2) => $valor2 * 0.1;
+echo $dizimo2(956.60);
 
 
 
